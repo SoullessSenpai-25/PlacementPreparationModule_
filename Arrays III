@@ -1,0 +1,31 @@
+1.search in 2d 
+Code-:using BS
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int row = matrix.size(), col = matrix[0].size();
+        int start = 0, end = row*col - 1;
+        while(start <= end){
+            int mid = start + (end-start)/2, element = matrix[mid/col][mid%col];
+            if(element == target)
+                return true;
+            else if(element < target)
+                start = mid+1;
+            else
+                end = mid-1;
+        }
+        return false;
+    }
+};
+2.Majority element in>n/2
+Code-:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int mid= nums.size()/2;
+        return nums[mid];
+    }
+};
+
+3.
