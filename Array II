@@ -1,0 +1,90 @@
+1.Rotate Matrix
+code-:
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        reverse(matrix.begin() , matrix.end());
+        int r = matrix.size();
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j <= i; j++) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+    }
+};
+
+2.Merge Intervals
+Code-:
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& mat) {
+        sort(mat.begin(),mat.end());
+   vector<vector<int>>ans;
+   int first=-1;
+   int second=-1;
+   for(int i=0;i<mat.size();i++){
+      if(first==-1){first=mat[i][0];second=mat[i][1];}
+      else{
+         if(second>=mat[i][0])
+         {
+            if(second<=mat[i][1])
+            {
+               second=mat[i][1];
+            }
+         }
+         else{
+            ans.push_back({first,second});
+            first=mat[i][0];
+            second=mat[i][1];
+         }
+      }
+   }
+   if(second!=-1){
+      ans.push_back({first,second});
+   }
+   return ans;
+    }
+};
+
+3.Find duplicate numbers
+Code-:
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n= nums.size();
+        int ans;
+
+        sort(nums.begin(), nums.end());
+        for(int i=0; i<n-1; i++){
+                if(nums[i]==nums[i+1]){
+                    ans= nums[i];
+                    break;
+                }
+        }
+        return ans;        
+    }
+};
+
+4.Reapeat and missing number
+code-:{
+    int n=A.size();
+    int B[n+1]={0};
+    int a=0;
+    int b=0;
+    for(int i=0;i<n;i++)
+    {
+        B[A[i]]++;
+    }
+    for(int i=0;i<=n;i++)
+    {
+        if(B[i]==0)
+        {
+            a=i;
+        }
+        if(B[i]==2)
+        {
+            b=i;
+        }
+    }
+    return {b,a};
+}
